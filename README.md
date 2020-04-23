@@ -1,6 +1,6 @@
 # Chatbot
 
-Designed this bot in google dialog flow
+Designed this bot for COVID19 in google dialog flow
 
 -------------
 COVID Details
