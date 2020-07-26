@@ -5,6 +5,7 @@ from flask import Flask, render_template, jsonify
 from flask import make_response
 from flask import request
 from flask_mail import Mail, Message
+import time
 import os
 import smtplib  # import SMTP lib
 
@@ -79,8 +80,8 @@ def results():
 
         datanew = callingAPI()
 
-        print("datareceived")
-        print(datanew)
+        #print("datareceived")
+        #print(datanew)
 
         dataval = datanew
 
@@ -99,8 +100,8 @@ def results():
         # passing user input zipcode to get teh COVID 19 details
         CovidreturnedVal = GetDistrictandstateusingpincode(zipcode)
         CovidreturnedValues = CovidreturnedVal
-
-        print(str(CovidreturnedValues['Confirmed']))
+        send_mail(emailid, CovidreturnedValues)
+        #print(str(CovidreturnedValues['Confirmed']))
         if ((int(CovidreturnedValues['Confirmed']) >= 0)):
             # results
             Districtwiseresults = "Please find the details for Covid 19 in your location " + str(
@@ -112,15 +113,15 @@ def results():
 
             Districtwiseresults = Districtwiseresults + "Requested details has been shared through mail.Please Proceed COVID 19 related queries."
             # sending mail to the user
-            send_mail(emailid, CovidreturnedValues)
+           # send_mail(emailid, CovidreturnedValues)
         else:
             Districtwiseresults = {"State": "ALL", "District": "ALL", "Confirmed": Confirmed,
                                    "Active": "-", "Recovered": Recovered,
                                    "Deceased": Deaths}
             # sending mail to the user
-            send_mail(emailid, Districtwiseresults)
+           # send_mail(emailid, CovidreturnedValues)
 
-    print(Districtwiseresults)
+    #print(Districtwiseresults)
     return {'fulfillmentText': Districtwiseresults}
 
 
@@ -271,5 +272,8 @@ def GetCovid19details(stateVal, DistrictVal):
     return CovidreturnedValues
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+port = os.getenv("PORT")
+if __name__ == "__main__":
+    # app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=port)
+   # app.run(host='127.0.0.1', port=8001, debug=True)

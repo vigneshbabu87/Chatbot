@@ -1,0 +1,9 @@
+---
+applications:
+- name: Covid
+  memory: 1.5GB
+  disk_quota: 1.5GB
+  random-route: true
+  parameters:
+    memory: 1.5GB
+    buildpack: 'https://github.com/cloudfoundry/python-buildpack.git'
