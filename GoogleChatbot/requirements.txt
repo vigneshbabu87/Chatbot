@@ -37,7 +37,7 @@ Django==2.2.6
 djangorestframework==3.10.3
 emoji==0.5.4
 Flask==1.1.2
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 Flask-Mail==0.9.1
 Flask-MonitoringDashboard==3.0.6
 geojson==2.5.0
