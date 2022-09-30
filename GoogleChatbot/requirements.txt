@@ -49,7 +49,7 @@ isodate==0.6.0
 isort==4.3.21
 itsdangerous==1.1.0
 Jinja2==2.11.2
-joblib==0.14.1
+joblib==1.2.0
 jsonpickle==1.2
 kiwisolver==1.1.0
 kneed==0.5.3
